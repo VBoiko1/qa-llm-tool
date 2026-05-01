@@ -29,9 +29,11 @@ if st.button("Сгенерировать тест-кейсы"):
         })
 
         for file in uploaded_files:
-            content.append({
+             base64_image = encode_image(file)
+
+             content.append({
                 "type": "input_image",
-                "image_base64": encode_image(file)
+                "image_url": f"data:image/png;base64,{base64_image}"
             })
 
         with st.spinner("Генерация..."):
